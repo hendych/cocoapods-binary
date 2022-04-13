@@ -227,13 +227,12 @@ module Pod
 
         # Override the download step to skip download and prepare file in target folder
         old_method = instance_method(:install_source_of_pod)
-        Pod::UI.puts "PREBUILDS #{self.prebuild_pod_names}"
         define_method(:install_source_of_pod) do |pod_name|
 
             # copy from original
             pod_installer = create_pod_installer(pod_name)
             # \copy from original
-
+            Pod::UI.puts "PREBUILDS #{self.prebuild_pod_names}"
             Pod::UI.puts "NAME #{pod_name}"
 
             if self.prebuild_pod_names.include? pod_name
