@@ -193,6 +193,7 @@ module Pod
                 targets.each do |target|
                     # the framework_file_path rule is decided when `install_for_prebuild`,
                     # as to compitable with older version and be less wordy.
+                    Pod::UI.puts "TARGETS #{target} name: #{target.name} framework name: #{target.framework_name}"
                     framework_file_path = target.framework_name
                     framework_file_path = target.name + "/" + framework_file_path if targets.count > 1
                     add_vendered_framework(spec, target.platform.name.to_s, framework_file_path)
